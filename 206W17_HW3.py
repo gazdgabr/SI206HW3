@@ -40,13 +40,36 @@ def  parse_counted_words(string_in):
 ## We have provided a text file computer_paths.txt. It's not incredibly long -- you can scan through it, but do NOT hard code your answers! Each line contains 1 filesystem path.
 
 ## (a) Write Python code to determine how many of these paths identify FILES, not directories. Save that number in the variable file_paths_num.
+input_file = open("computer_paths.txt", "r")
+file_paths_num = 0
+for line_a in input_file:
+    line_a = line_a.rstrip()
+    if re.search('^.*\..*', line_a):
+        file_paths_num += 1
 
 ## (b) Write Python code to determine how many of these paths are FULL paths, not relative paths. Save that number in the variable full_paths_num.
+input_file = open("computer_paths.txt", "r")
+full_paths_num = 0
+for line_b in input_file:
+    line_b = line_b.rstrip()
+    if re.search('^~?[/].*[/]', line_b):
+        full_paths_num += 1
 
 ## (c) Write Python code to determine how many of these paths describe a Python file saved inside a folder called SI206. Save that number in the variable python_course_paths.
+input_file = open("computer_paths.txt", "r")
+python_course_paths = 0
+for line_c in input_file:
+    line_c = line_c.rstrip()
+    if re.search('^.*SI206.*\.py', line_c):
+        python_course_paths += 1
 
 ## (d) Write Python code to determine how many of these paths describe a Microsoft file (a file that EITHER ends with .docx OR .xlsx, but nothing else counts) where the file name ends in a digit. Save that total in the variable microsoft_files_num.
-
+input_file = open("computer_paths.txt", "r")
+microsoft_files_num = 0
+for line_d in input_file:
+    line_d = line_d.rstrip()
+    if re.search('^.*[0-9]\.docx|^.*[0-9]\.xlsx', line_d):
+        microsoft_files_num += 1
 
 
 
