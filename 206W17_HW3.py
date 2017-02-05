@@ -21,16 +21,13 @@ import re
 ## Write code to define your parse_counted_words function here.
 def  parse_counted_words(string_in):
 
-    list_of_strings = re.findall('[0-9]+\s[^A-Za-z]?[A-Za-z]*', string_in)
+    list_of_strings = re.findall('[0-9]+\s[^A-Za-z]?[A-Za-z]+', string_in)
     size = len(list_of_strings)
     if(size > 0):
         last_match = list_of_strings[-1]
-        first_element_list = re.findall('[0-9]+', last_match)
-        first_element_string = first_element_list[-1]
-        
-        second_element_list = re.findall('\s([^A-Za-z]?[A-Za-z]*)', last_match)
-        second_element_string = second_element_list[-1]
-        return (first_element_string, second_element_string)
+        first_element = (re.findall('[0-9]+', last_match))[-1]
+        second_element = (re.findall('\s([^A-Za-z]?[A-Za-z]+)', last_match))[-1]
+        return (first_element, second_element)
     else:
         return None
 
